@@ -1,0 +1,46 @@
+# public/robots.txt - Archivo robots.txt optimizado
+
+# Permitir acceso a todos los bots por defecto
+User-agent: *
+Allow: /
+
+# Bloquear directorios que no deben ser indexados
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+
+# Permitir específicamente ciertos recursos importantes
+Allow: /api/sitemap
+Allow: /_next/static/
+
+# Configuraciones específicas para Googlebot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Configuraciones para Bingbot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+# Bloquear bots maliciosos conocidos
+User-agent: BadBot
+Disallow: /
+
+User-agent: Scrapy
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+# Ubicación del sitemap principal
+Sitemap: https://mi-sitio.com/api/sitemap
+
+# Si tienes múltiples sitemaps, puedes agregarlos aquí
+# Sitemap: https://mi-sitio.com/api/sitemap-blog
+# Sitemap: https://mi-sitio.com/api/sitemap-products
+
+# Información adicional del host (opcional)
+# Host: https://mi-sitio.com
