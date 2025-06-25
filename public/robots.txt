@@ -36,11 +36,11 @@ User-agent: AhrefsBot
 Disallow: /
 
 # Ubicación del sitemap principal
-Sitemap: https://mi-sitio.com/api/sitemap
+Sitemap: https://seo-tarea.vercel.app/api/sitemap
 
 # Si tienes múltiples sitemaps, puedes agregarlos aquí
-# Sitemap: https://mi-sitio.com/api/sitemap-blog
-# Sitemap: https://mi-sitio.com/api/sitemap-products
+# Sitemap: https://seo-tarea.vercel.app/api/sitemap-blog
+# Sitemap: https://seo-tarea.vercel.app/api/sitemap-products
 
 # Información adicional del host (opcional)
-# Host: https://mi-sitio.com
+# Host: https://seo-tarea.vercel.app

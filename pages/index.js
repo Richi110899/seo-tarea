@@ -16,7 +16,7 @@ export default function Home() {
           content="Next.js, SEO, optimización web, meta tags, sitemap, rendimiento web, desarrollo web"
         />
 
-        {/* Meta tags para Open Graph (redes sociales) */}
+        {/* Open Graph (Facebook, LinkedIn, etc.) */}
         <meta
           property="og:title"
           content="Mi Sitio Web Optimizado - Técnicas Avanzadas de SEO"
@@ -27,10 +27,10 @@ export default function Home() {
         />
         <meta
           property="og:image"
-          content="https://mi-sitio.com/images/seo-home.png"
+          content="https://seo-tarea.vercel.app/images/seo-home.png"
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://mi-sitio.com/" />
+        <meta property="og:url" content="https://seo-tarea.vercel.app/" />
 
         {/* Twitter Cards */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -44,13 +44,13 @@ export default function Home() {
         />
         <meta
           name="twitter:image"
-          content="https://mi-sitio.com/images/seo-home.png"
+          content="https://seo-tarea.vercel.app/images/seo-home.png"
         />
 
-        {/* Meta tags adicionales */}
+        {/* Extras */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://mi-sitio.com/" />
+        <link rel="canonical" href="https://seo-tarea.vercel.app/" />
       </Head>
 
       <main className="max-w-5xl mx-auto px-4 py-8">

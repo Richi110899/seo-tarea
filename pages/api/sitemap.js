@@ -1,7 +1,6 @@
-// pages/api/sitemap.js - Sitemap Dinámico Avanzado
-const BASE_URL = "https://mi-sitio.com";
+const BASE_URL = "https://seo-tarea.vercel.app";
 
-// Simulamos datos que podrían venir de una base de datos o CMS
+// Simulamos páginas estáticas
 const getStaticPages = () => {
   return [
     { url: "/", changefreq: "daily", priority: "1.0", lastmod: "2025-06-24" },
@@ -32,9 +31,8 @@ const getStaticPages = () => {
   ];
 };
 
-// Simulamos artículos de blog que vendrían de una base de datos
+// Simulamos artículos de blog
 const getBlogPosts = async () => {
-  // En un proyecto real, esto sería una consulta a la base de datos
   return [
     {
       id: 1,
@@ -69,7 +67,7 @@ const getBlogPosts = async () => {
   ];
 };
 
-// Simulamos productos o servicios dinámicos
+// Simulamos servicios dinámicos
 const getDynamicServices = async () => {
   return [
     {
@@ -90,14 +88,13 @@ const getDynamicServices = async () => {
   ];
 };
 
+// API handler para el sitemap
 export default async function handler(req, res) {
   try {
-    // Obtener todas las URLs dinámicamente
     const staticPages = getStaticPages();
     const blogPosts = await getBlogPosts();
     const services = await getDynamicServices();
 
-    // Crear URLs para artículos de blog
     const blogUrls = blogPosts.map((post) => ({
       url: `/blog/${post.slug}`,
       changefreq: "weekly",
@@ -105,7 +102,6 @@ export default async function handler(req, res) {
       lastmod: post.lastmod,
     }));
 
-    // Crear URLs para servicios
     const serviceUrls = services.map((service) => ({
       url: `/servicios/${service.slug}`,
       changefreq: "monthly",
@@ -113,22 +109,16 @@ export default async function handler(req, res) {
       lastmod: service.lastmod,
     }));
 
-    // Combinar todas las URLs
     const allUrls = [...staticPages, ...blogUrls, ...serviceUrls];
-
-    // Generar el XML del sitemap
     const sitemap = generateSitemapXml(allUrls);
 
-    // Configurar headers
     res.setHeader("Content-Type", "text/xml");
     res.setHeader(
       "Cache-Control",
       "public, s-maxage=3600, stale-while-revalidate=86400"
     );
 
-    // Enviar el sitemap
-    res.write(sitemap);
-    res.end();
+    res.status(200).end(sitemap);
   } catch (error) {
     console.error("Error generando sitemap:", error);
     res.status(500).json({ error: "Error interno del servidor" });
@@ -138,9 +128,7 @@ export default async function handler(req, res) {
 // Función para generar el XML del sitemap
 function generateSitemapXml(urls) {
   const urlEntries = urls
-    .map((urlData) => {
-      const { url, changefreq, priority, lastmod } = urlData;
-
+    .map(({ url, changefreq, priority, lastmod }) => {
       return `
     <url>
       <loc>${BASE_URL}${url}</loc>
@@ -157,7 +145,7 @@ function generateSitemapXml(urls) {
 </urlset>`;
 }
 
-// Función adicional para generar sitemap index si hay muchas URLs
+// Función opcional si necesitas un índice de varios sitemaps
 export function generateSitemapIndex() {
   const sitemaps = [
     {

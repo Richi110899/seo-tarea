@@ -48,22 +48,26 @@ export default function Blog() {
         />
         <meta
           property="og:image"
-          content="https://mi-sitio.com/images/blog-banner.png"
+          content="https://seo-tarea.vercel.app/images/blog-banner.png"
         />
-        <meta property="og:type" content="blog" />
-        <meta property="og:url" content="https://mi-sitio.com/blog" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://seo-tarea.vercel.app/blog" />
 
         {/* Twitter Cards específicas para blog */}
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Blog de SEO y Desarrollo Web" />
         <meta
           name="twitter:description"
           content="Artículos sobre SEO y optimización web"
         />
+        <meta
+          name="twitter:image"
+          content="https://seo-tarea.vercel.app/images/blog-banner.png"
+        />
 
-        {/* Meta tags adicionales para blog */}
+        {/* Meta tags adicionales */}
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://mi-sitio.com/blog" />
+        <link rel="canonical" href="https://seo-tarea.vercel.app/blog" />
         <meta property="article:section" content="Technology" />
         <meta property="article:tag" content="SEO, Web Development, Next.js" />
       </Head>

@@ -48,10 +48,13 @@ export default function Contacto() {
         />
         <meta
           property="og:image"
-          content="https://mi-sitio.com/images/contact-banner.png"
+          content="https://seo-tarea.vercel.app/images/contact-banner.png"
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://mi-sitio.com/contacto" />
+        <meta
+          property="og:url"
+          content="https://seo-tarea.vercel.app/contacto"
+        />
 
         {/* Twitter Cards */}
         <meta name="twitter:card" content="summary" />
@@ -60,10 +63,14 @@ export default function Contacto() {
           name="twitter:description"
           content="Contáctanos para proyectos de SEO y desarrollo web"
         />
+        <meta
+          name="twitter:image"
+          content="https://seo-tarea.vercel.app/images/contact-banner.png"
+        />
 
-        {/* Meta tags específicos para contacto */}
+        {/* Meta tags adicionales */}
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://mi-sitio.com/contacto" />
+        <link rel="canonical" href="https://seo-tarea.vercel.app/contacto" />
 
         {/* Schema.org para datos estructurados de contacto */}
         <script type="application/ld+json">
@@ -73,7 +80,7 @@ export default function Contacto() {
             name: "Contacto - Mi Sitio Web Optimizado",
             description:
               "Página de contacto para consultas sobre SEO y desarrollo web",
-            url: "https://mi-sitio.com/contacto",
+            url: "https://seo-tarea.vercel.app/contacto",
             contactPoint: {
               "@type": "ContactPoint",
               contactType: "Customer Service",
