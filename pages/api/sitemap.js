@@ -1,6 +1,5 @@
 const BASE_URL = "https://seo-tarea.vercel.app";
 
-// Simulamos páginas estáticas
 const getStaticPages = () => {
   return [
     { url: "/", changefreq: "daily", priority: "1.0", lastmod: "2025-06-24" },
@@ -31,7 +30,6 @@ const getStaticPages = () => {
   ];
 };
 
-// Simulamos artículos de blog
 const getBlogPosts = async () => {
   return [
     {
@@ -67,7 +65,6 @@ const getBlogPosts = async () => {
   ];
 };
 
-// Simulamos servicios dinámicos
 const getDynamicServices = async () => {
   return [
     {
@@ -88,7 +85,6 @@ const getDynamicServices = async () => {
   ];
 };
 
-// API handler para el sitemap
 export default async function handler(req, res) {
   try {
     const staticPages = getStaticPages();
@@ -112,11 +108,9 @@ export default async function handler(req, res) {
     const allUrls = [...staticPages, ...blogUrls, ...serviceUrls];
     const sitemap = generateSitemapXml(allUrls);
 
-    res.setHeader("Content-Type", "text/xml");
-    res.setHeader(
-      "Cache-Control",
-      "public, s-maxage=3600, stale-while-revalidate=86400"
-    );
+    // 👇 Cambios clave aquí
+    res.setHeader("Content-Type", "application/xml");
+    res.setHeader("Cache-Control", "public, max-age=0, must-revalidate");
 
     res.status(200).end(sitemap);
   } catch (error) {
@@ -125,7 +119,6 @@ export default async function handler(req, res) {
   }
 }
 
-// Función para generar el XML del sitemap
 function generateSitemapXml(urls) {
   const urlEntries = urls
     .map(({ url, changefreq, priority, lastmod }) => {
@@ -143,29 +136,4 @@ function generateSitemapXml(urls) {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${urlEntries}
 </urlset>`;
-}
-
-// Función opcional si necesitas un índice de varios sitemaps
-export function generateSitemapIndex() {
-  const sitemaps = [
-    {
-      loc: `${BASE_URL}/api/sitemap`,
-      lastmod: new Date().toISOString().split("T")[0],
-    },
-  ];
-
-  const sitemapEntries = sitemaps
-    .map(
-      (sitemap) => `
-    <sitemap>
-      <loc>${sitemap.loc}</loc>
-      <lastmod>${sitemap.lastmod}</lastmod>
-    </sitemap>`
-    )
-    .join("");
-
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${sitemapEntries}
-</sitemapindex>`;
 }
